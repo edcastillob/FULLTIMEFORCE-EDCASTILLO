@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
+import { GitDataUserInterface } from '../interfaces/git-data-user.interface';
 
 @Injectable()
 export class GitDataUserService {
@@ -12,7 +13,19 @@ export class GitDataUserService {
       const response = await axios.get(
         'https://api.github.com/repos/edcastillob/FULLTIMEFORCE-EDCASTILLO/commits',
       );
-      return response.data;
+
+      const selectedCommits: GitDataUserInterface[] = response.data.map(
+        (commit: GitDataUserInterface) => ({
+          sha: commit.sha,
+          commit: {
+            message: commit.commit.message,
+            author: {
+              date: commit.commit.author.date,
+            },
+          },
+        })
+      );     
+      return selectedCommits;
     } catch (error) {
       throw error;
     }
