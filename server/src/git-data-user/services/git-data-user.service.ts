@@ -18,10 +18,12 @@ export class GitDataUserService {
       const selectedCommits: GitDataUserInterface[] = response.data.map(
         (commit: GitDataUserInterface) => ({
           sha: commit.sha,
+          url: commit.url,
           commit: {
             message: commit.commit.message,
             author: {
               date: commit.commit.author.date,
+              name: commit.commit.author.name,
             },
           },
         })
