@@ -1,10 +1,11 @@
 import './App.css'
+import { Home } from './components/home/Home';
 
 function App() {
   return (
     <>
       <div>
-        <h1>Frontend Commits</h1>
+        <Home />
       </div>
      
     </>
