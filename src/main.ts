@@ -10,7 +10,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
 
   app.use(morgan('dev'));
-  app.enableCors(CORS)
+  app.enableCors(CORS)  
 
   const port = configService.get<number>('PORT');
 
