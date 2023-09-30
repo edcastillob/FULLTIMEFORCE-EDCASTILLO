@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { GitDataUserInterface } from '../interfaces/git-data-user.interface';
+import { CommitDetail } from '../interfaces/commitDetail.interface';
 
 @Injectable()
 export class GitDataUserService {
@@ -48,6 +49,36 @@ export class GitDataUserService {
         commit.commit.author.date.startsWith(date)
       );
       return filteredCommits;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getCommitDetailsBySha(sha: string): Promise<CommitDetail | null> {
+    try {
+      const resp = await axios.get(
+        `https://api.github.com/repos/edcastillob/FULLTIMEFORCE-EDCASTILLO/commits/${sha}`
+      );
+
+      if (resp.status === 200) {
+        const commitDetails: CommitDetail = {
+          sha: resp.data.sha,
+          node_id: resp.data.node_id,
+          commit: {
+            message: resp.data.commit.message,
+          },
+          url: resp.data.url,
+          html_url: resp.data.html_url,
+          comments_url: resp.data.comments_url,          
+          parents: resp.data.parents.map((parent: any) => ({
+            sha: parent.sha,
+            url: parent.url,
+            html_url: parent.html_url,
+          })),
+        };
+        return commitDetails;
+      } else {
+        return null; 
+      }
     } catch (error) {
       throw error;
     }

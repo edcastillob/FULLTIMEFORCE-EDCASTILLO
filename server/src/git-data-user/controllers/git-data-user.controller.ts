@@ -1,6 +1,7 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { GitDataUserService } from '../services/git-data-user.service';
 import { GitDataUserInterface } from '../interfaces/git-data-user.interface';
+import { CommitDetail } from '../interfaces/commitDetail.interface';
 
 @Controller()
 export class GitDataUserController {
@@ -36,6 +37,15 @@ export class GitDataUserController {
     try {
       const commits = await this.GitDataUserService.searchCommitsByDate(date);
       return commits;
+    } catch (error) {
+      throw error;
+    }
+  }
+  @Get('commits/:sha')
+  async getCommitDetails(@Param('sha') sha: string): Promise<CommitDetail | null> {
+    try {
+      const commitDetails = await this.GitDataUserService.getCommitDetailsBySha(sha);
+      return commitDetails;
     } catch (error) {
       throw error;
     }
