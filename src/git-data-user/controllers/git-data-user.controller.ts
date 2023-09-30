@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { GitDataUserService } from '../services/git-data-user.service';
 import { GitDataUserInterface } from '../interfaces/git-data-user.interface';
 
@@ -15,6 +15,16 @@ export class GitDataUserController {
   async getCommits(): Promise<GitDataUserInterface[]> {
     try {
       const commits = await this.GitDataUserService.getCommitsFromGitHub();
+      return commits;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  @Get('commits/search')
+  async searchCommits(@Query('query') query: string): Promise<GitDataUserInterface[]> {
+    try {
+      const commits = await this.GitDataUserService.searchCommitsByMessage(query);
       return commits;
     } catch (error) {
       throw error;

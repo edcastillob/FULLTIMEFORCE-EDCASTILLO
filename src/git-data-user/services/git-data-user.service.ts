@@ -30,4 +30,15 @@ export class GitDataUserService {
       throw error;
     }
   }
+  async searchCommitsByMessage(query: string): Promise<GitDataUserInterface[]> {
+    try {
+      const commits = await this.getCommitsFromGitHub();
+      const filteredCommits = commits.filter((commit) =>
+        commit.commit.message.toLowerCase().includes(query.toLowerCase())
+      );
+      return filteredCommits;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
