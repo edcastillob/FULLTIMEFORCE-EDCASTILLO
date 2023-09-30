@@ -30,4 +30,14 @@ export class GitDataUserController {
       throw error;
     }
   }
+
+  @Get('commits/searchByDate')
+  async searchCommitsByDate(@Query('date') date: string): Promise<GitDataUserInterface[]> {
+    try {
+      const commits = await this.GitDataUserService.searchCommitsByDate(date);
+      return commits;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

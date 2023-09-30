@@ -41,4 +41,15 @@ export class GitDataUserService {
       throw error;
     }
   }
+  async searchCommitsByDate(date: string): Promise<GitDataUserInterface[]> {
+    try {
+      const commits = await this.getCommitsFromGitHub();
+      const filteredCommits = commits.filter((commit) =>
+        commit.commit.author.date.startsWith(date)
+      );
+      return filteredCommits;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
