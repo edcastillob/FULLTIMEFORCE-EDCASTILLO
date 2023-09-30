@@ -2,7 +2,10 @@ import { Controller, Get, Param, Query } from '@nestjs/common';
 import { GitDataUserService } from '../services/git-data-user.service';
 import { GitDataUserInterface } from '../interfaces/git-data-user.interface';
 import { CommitDetail } from '../interfaces/commitDetail.interface';
+import { ApiTags } from '@nestjs/swagger';
 
+
+@ApiTags('Commits edcastillob')
 @Controller()
 export class GitDataUserController {
   constructor(private readonly GitDataUserService: GitDataUserService) {}
