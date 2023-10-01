@@ -12,8 +12,11 @@ export class GitDataUserService {
   async getCommitsFromGitHub(): Promise<any[]> {
     try {
       const response = await axios.get(
-        'https://api.github.com/repos/edcastillob/FULLTIMEFORCE-EDCASTILLO/commits',
-      );
+        'https://api.github.com/repos/edcastillob/FULLTIMEFORCE-EDCASTILLO/commits',{
+          headers: {
+            Authorization: 'Bearer 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', 
+          },
+        });
 
       const selectedCommits: GitDataUserInterface[] = response.data.map(
         (commit: GitDataUserInterface) => ({
