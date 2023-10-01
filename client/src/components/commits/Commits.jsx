@@ -11,11 +11,13 @@ export const Commits = () => {
     dispatch(getCommits());
   }, []);
 
+  
+
    return (
     <div className={style.commitsContainer}>
       {commits.map((commit) => (
         <div key={commit.sha} className={style.commit}>
-          <div className={style.commitMessage}>{commit.message}</div>
+          <div className={style.commitMessage}>{commit.commit.message}</div>
           <div className={style.commitDetails}>
             <div>
               <strong>Name:</strong> {commit.commit.author.name}

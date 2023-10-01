@@ -1,0 +1,27 @@
+.backgroundFav {
+    background: #000924;    
+  }
+
+  
+  .textnav {
+    color: white;
+    font: bold;
+  }
+  .textnav:hover {
+    color: rgb(79, 210, 250); /* Cambia el color de texto a negro */
+  }
+  
+ 
+  .buttonSearch {
+    background-color: #d6dae6;
+    color: #000924;
+    border: none;
+    margin-left: 5px;
+  }
+
+  .buttonSearch:hover{
+    background-color: #000924;
+    color: white;
+    font: bold;
+  }
+  
