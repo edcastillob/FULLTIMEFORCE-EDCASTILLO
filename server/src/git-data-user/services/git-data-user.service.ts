@@ -14,7 +14,7 @@ export class GitDataUserService {
       const response = await axios.get(
         'https://api.github.com/repos/edcastillob/FULLTIMEFORCE-EDCASTILLO/commits',{
           headers: {
-            Authorization: 'Bearer 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', 
+            Authorization: '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', 
           },
         });
 
