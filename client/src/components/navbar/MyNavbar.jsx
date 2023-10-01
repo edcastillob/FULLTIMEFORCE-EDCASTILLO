@@ -38,8 +38,7 @@ export const MyNavbar = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    dispatch(getSearch(search))
-    console.log("Búsqueda enviada:", search);
+    dispatch(getSearch(search))    
     setSearch('')
     
   };
@@ -64,7 +63,7 @@ export const MyNavbar = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto ms-auto">
             <NavItem>
-              <NavLink className={ styles.textnav } href="/home/">
+              <NavLink className={ styles.textnav } href="/">
                 Inicio
               </NavLink>
             </NavItem>
@@ -79,7 +78,7 @@ export const MyNavbar = () => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className={ styles.textnav } href="http://localhost:3000/docs">
+              <NavLink className={ styles.textnav } href="http://localhost:3000/docs" target="_blank" >
                 Docs Backend
               </NavLink>
             </NavItem>
@@ -106,3 +105,4 @@ export const MyNavbar = () => {
     </div>
   );
 };
+

@@ -23,8 +23,7 @@ export const getCommits = () => {
   export const getSearch = (search) => {
     return async (dispatch) => {
       try {
-        const resp = await axios.get(`${ENDPOINT}commits/search?query=${search}`);
-        console.log(resp);
+        const resp = await axios.get(`${ENDPOINT}commits/search?query=${search}`);        
         if (!resp.data.length | undefined) {
           toast.info('there is no coincidence', {
             position: toast.POSITION.TOP_RIGHT,

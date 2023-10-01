@@ -32,3 +32,19 @@
     color: #777;
   }
   
+.link {
+  text-decoration: none; 
+  color: #007bff; 
+  font-weight: bold; 
+  transition: color 0.3s;
+}
+
+.link:hover {
+  color: #0056b3; 
+}
+
+.lblFilter{
+  font-weight: bold;
+  color: #007bff;
+  
+}

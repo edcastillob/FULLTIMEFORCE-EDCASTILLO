@@ -1,1 +1,11 @@
 
+.parrafo{
+    text-align: center;
+    line-height: 2;
+}
+
+.img {
+    margin-top: 50px;
+    border-radius: 15px;
+    width: 80vh;
+}
