@@ -3,6 +3,10 @@ export interface CommitDetail {
   node_id: string;
   commit: {
     message: string;
+    author: {
+      name: string; 
+      date: string; 
+    };
   };
   url: string;
   html_url: string;

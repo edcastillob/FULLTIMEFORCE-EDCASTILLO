@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { GitDataUserInterface } from '../interfaces/git-data-user.interface';
 import { CommitDetail } from '../interfaces/commitDetail.interface';
+import commitsJson from '../../commits/commits.json';
 
 @Injectable()
 export class GitDataUserService {
@@ -14,7 +15,7 @@ export class GitDataUserService {
       const response = await axios.get(
         'https://api.github.com/repos/edcastillob/FULLTIMEFORCE-EDCASTILLO/commits',{
           headers: {
-            Authorization: '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', 
+            Authorization: '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', 
           },
         });
 
@@ -33,9 +34,15 @@ export class GitDataUserService {
       );     
       return selectedCommits;
     } catch (error) {
-      throw error;
+      if (axios.isAxiosError(error) && error.response?.status === 401 ) {
+        console.log('Falló la autenticación de GitHub. Cargando datos desde commitsJson.');
+        return commitsJson;
+      } else {
+        throw error;
+      }
     }
   }
+
   async searchCommitsByMessage(query: string): Promise<GitDataUserInterface[]> {
     try {
       const commits = await this.getCommitsFromGitHub();
@@ -70,10 +77,14 @@ export class GitDataUserService {
           node_id: resp.data.node_id,
           commit: {
             message: resp.data.commit.message,
+            author:{
+              name: resp.data.commit.author.name,
+              date: resp.data.commit.author.date,
+            },
           },
           url: resp.data.url,
           html_url: resp.data.html_url,
-          comments_url: resp.data.comments_url,          
+          comments_url: resp.data.comments_url,
           parents: resp.data.parents.map((parent: any) => ({
             sha: parent.sha,
             url: parent.url,
