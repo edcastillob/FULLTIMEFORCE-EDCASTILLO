@@ -1,0 +1,34 @@
+/* Commits.module.css */
+
+.commitsContainer {
+    margin: 20px;
+  }
+  
+  .commit {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .commitMessage {
+    font-weight: bold;
+  }
+  
+  .commitDetails {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .commitDetails strong {
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .commitSha {
+    align-self: flex-end;
+    font-size: 0.8em;
+    color: #777;
+  }
+  

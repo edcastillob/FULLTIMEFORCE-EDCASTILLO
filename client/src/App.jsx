@@ -1,11 +1,12 @@
 import './App.css'
-import { Home } from './components/home/Home';
+import { Commits } from './components/commits/Commits'
+
 
 function App() {
   return (
     <>
       <div>
-        <Home />
+        <Commits />
       </div>
      
     </>
