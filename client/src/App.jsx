@@ -5,6 +5,7 @@ import { MyNavbar } from './components/navbar/MyNavbar'
 import { Home } from './components/home/Home';
 import { Footer } from './components/footer/Footer';
 import { Landing } from './landing/Landing';
+import { CommitsDetail } from './components/commits/CommitsDetail';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/commits" element={<Commits />} />        
+        <Route exact path="/commits/:sha" element={<CommitsDetail />} />        
       </Routes>
       <Footer />
       </div>

@@ -1,5 +1,5 @@
 import { ENDPOINT } from "../../components/endpoint/ENDPOINT";
-import { GET_COMMITS, GET_SEARCH } from "./types";
+import { GET_COMMITS, GET_COMMIT_DETAIL, GET_SEARCH } from "./types";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -37,3 +37,15 @@ export const getCommits = () => {
       }
     };
   };
+
+  export const getCommitDetail = (sha) => {
+    return async (dispatch) => {
+      try {
+        const resp = await axios.get(`${ENDPOINT}commits/${sha}`);
+        dispatch({ type: GET_COMMIT_DETAIL, payload: resp.data });
+      } catch (error) {
+        throw new Error("Error fetching Commit details.");
+      }
+    };
+  };
+  

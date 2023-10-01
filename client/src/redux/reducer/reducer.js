@@ -1,9 +1,10 @@
-import { GET_COMMITS, GET_SEARCH } from "../actions/types";
+import { GET_COMMITS, GET_COMMIT_DETAIL, GET_SEARCH } from "../actions/types";
 
 
 
 const initialState = {
     commits: [],
+    commitDetail:"",
 }
 
 function reducer( state = initialState, actions ){
@@ -17,6 +18,11 @@ function reducer( state = initialState, actions ){
             return{
                 ...state,
                 commits: actions.payload,
+            }
+        case GET_COMMIT_DETAIL:
+            return{
+                ...state,
+                commitDetail: actions.payload,
             }
         default:
             return state;

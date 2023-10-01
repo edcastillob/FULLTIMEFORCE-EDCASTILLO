@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCommits } from "../../redux/actions/actions";
 import style from "./Commits.module.css";
+import { Link } from "react-router-dom";
+
 
 export const Commits = () => {
   const dispatch = useDispatch();
@@ -41,7 +43,7 @@ export const Commits = () => {
           <select
             className="form-select"
             value={dateFilter}
-            onChange={(e) => setDateFilter(e.target.value)}          >
+            onChange={(e) => setDateFilter(e.target.value)}>
             {dateOptions.map((option) => (                
               <option key={option} value={option}>
                 {option}
@@ -85,6 +87,9 @@ export const Commits = () => {
                 {commit.url}
               </a>
             </div>
+            <Link to={`/commits/${commit.sha}`} className={`btn btn-primary btn-sm ${style.btnDetail}`}>
+              Detail 
+              </Link>
           </div>
         </div>
       ))}

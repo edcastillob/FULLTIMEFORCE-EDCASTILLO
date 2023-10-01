@@ -1,4 +1,3 @@
-/* Commits.module.css */
 
 .commitsContainer {
     margin: 20px;
@@ -48,3 +47,11 @@
   color: #007bff;
   
 }
+.btnDetail{
+  background-color: #d6dae6;
+  color: #000924;
+  border: none;
+  width: 5%;
+  align-items: first baseline;
+}
+
